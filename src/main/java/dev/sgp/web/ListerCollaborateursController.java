@@ -22,10 +22,16 @@ public class ListerCollaborateursController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setAttribute("listeNoms", Arrays.asList("Robert", "Jean", "Hugues"));
-		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-		.forward(req, resp);
+		
+		
 		// utilisation du service
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
+		
+		
+		
+		req.setAttribute("collaborateur", collaborateurs);
+		
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
+		.forward(req, resp);
 	}
 }

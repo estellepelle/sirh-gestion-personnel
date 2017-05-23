@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 import javax.servlet.RequestDispatcher;
@@ -58,7 +59,8 @@ public class NouveauCollaborateurController  extends HttpServlet {
 		} else {
 			
 			LocalDate dateNaissance = LocalDate.parse(dateInterNaissance);
-			String matricule = "1";
+			
+			String matricule = UUID.randomUUID().toString();
 			
 			String emailPro = prenom +  nom +"@societe.com";
 			String photo = "img.png";
@@ -72,13 +74,11 @@ public class NouveauCollaborateurController  extends HttpServlet {
 			collabService.sauvegarderCollaborateur(collab);
 			
 			
-			/*resp.getWriter().write("Création du collaborateur : "+ matricule + " "+ nom +" " +prenom +" " + dateNaissance + " "
-					+ adresse + " " + numSecParam + " " + emailPro + " " +photo);*/
+			
 			
 			resp.sendRedirect(req.getContextPath()+ "/collaborateurs/lister");
 			
-			/*resp.getWriter().write("Création du collaborateur avec les informations suivantes : " 
-				+ validationParams.get(true).stream().map(p -> p + "=" + req.getParameter(p)).collect(joining(",")));*/
+			
 			
 		}
 		
