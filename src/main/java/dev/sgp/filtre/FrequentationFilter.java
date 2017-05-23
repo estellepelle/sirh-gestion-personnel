@@ -1,7 +1,6 @@
 package dev.sgp.filtre;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -9,15 +8,15 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import dev.sgp.entite.Collaborateur;
-import dev.sgp.entite.VisiteStatistiques;
 import dev.sgp.entite.VisiteWeb;
-import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.VisiteWebService;
 import dev.sgp.util.Constantes;
 
+
+@WebFilter(urlPatterns = { "/*" },description = "Request statistic filter")
 public class FrequentationFilter implements Filter{
 	
 	
