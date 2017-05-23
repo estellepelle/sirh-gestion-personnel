@@ -24,7 +24,7 @@ public class ListerVisiteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 	// utilisation du service
-			List<VisiteStatistiques> visites = visiteService.listerStatVisites();
+			List<VisiteStatistiques> visites = visiteService.construireStatistiques();
 			
 			req.setAttribute("visites", visites);
 			

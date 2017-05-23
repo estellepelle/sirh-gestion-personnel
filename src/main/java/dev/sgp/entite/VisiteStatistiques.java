@@ -3,14 +3,14 @@ package dev.sgp.entite;
 public class VisiteStatistiques {
 	
 	private String chemin;
-	private int nbVisites;
+	private long nbVisites;
 	private long minExecution;
 	private long maxExecution;
-	private long moyExecution;
+	private double moyExecution;
 	
 	
 	
-	public VisiteStatistiques(String chemin, int nbVisites, long minExecution, long maxExecution, long moyExecution) {
+	public VisiteStatistiques(String chemin, long nbVisites, long minExecution, long maxExecution, double moyExecution) {
 		this.chemin = chemin;
 		this.nbVisites = nbVisites;
 		this.minExecution = minExecution;
@@ -26,11 +26,11 @@ public class VisiteStatistiques {
 		this.chemin = chemin;
 	}
 	
-	public int getNbVisites() {
+	public long getNbVisites() {
 		return nbVisites;
 	}
 	
-	public void setNbVisites(int nbVisites) {
+	public void setNbVisites(long nbVisites) {
 		this.nbVisites = nbVisites;
 	}
 	
@@ -50,11 +50,11 @@ public class VisiteStatistiques {
 		this.maxExecution = maxExecution;
 	}
 	
-	public long getMoyExecution() {
+	public double getMoyExecution() {
 		return moyExecution;
 	}
 	
-	public void setMoyExecution(long moyExecution) {
+	public void setMoyExecution(double moyExecution) {
 		this.moyExecution = moyExecution;
 	}
 	

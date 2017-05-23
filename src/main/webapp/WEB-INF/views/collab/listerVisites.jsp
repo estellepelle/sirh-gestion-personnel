@@ -12,13 +12,32 @@
 <body>
 	<h1>Statistiques</h1>
 	<!-- Liste des noms -->
-	<ul>
+	
+	<table class="table table-striped">
+		<tr>
+			<th>Chemin</th>
+			<th>Nombre de visites</th>
+			<th>Min</th>
+			<th>Max</th>
+			<th>Moyenne</th>
+		</tr>
 		
-			<c:forEach var="visite" items="${visites}"> 
-				<li> ${visite.chemin} ${visite.nbVisites} ${visite.minExecution} ${visite.maxExecution} ${visite.moyExecution} </li>
+		<c:forEach var="visite" items="${visites}"> 
+				<tr>
+					<td>${visite.chemin}</td>
+					<td>${visite.nbVisites}</td>
+					<td>${visite.minExecution}</td>
+					<td>${visite.maxExecution}</td>
+					<td>${visite.moyExecution}</td>
+				</tr>
+				   
 			</c:forEach>
+	</table>
+	
+		
 			
 			
-	</ul>
+			
+	
 </body>
 </html>

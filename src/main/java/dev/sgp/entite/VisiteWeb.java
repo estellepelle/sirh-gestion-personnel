@@ -10,8 +10,7 @@ public class VisiteWeb {
 	
 	
 	
-	public VisiteWeb(int id, String chemin, long tempsExecution) {
-		this.id = id;
+	public VisiteWeb(String chemin, long tempsExecution) {
 		this.chemin = chemin;
 		this.tempsExecution = tempsExecution;
 	}
