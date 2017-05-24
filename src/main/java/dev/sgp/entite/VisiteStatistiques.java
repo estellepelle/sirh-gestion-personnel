@@ -1,14 +1,22 @@
 package dev.sgp.entite;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class VisiteStatistiques {
 	
+
+	@Id
 	private String chemin;
 	private long nbVisites;
 	private long minExecution;
 	private long maxExecution;
 	private double moyExecution;
 	
-	
+	public VisiteStatistiques(){
+		
+	}
 	
 	public VisiteStatistiques(String chemin, long nbVisites, long minExecution, long maxExecution, double moyExecution) {
 		this.chemin = chemin;

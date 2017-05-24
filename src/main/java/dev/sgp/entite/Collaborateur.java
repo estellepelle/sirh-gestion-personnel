@@ -3,10 +3,13 @@ package dev.sgp.entite;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
-import javax.inject.Inject;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Collaborateur {
 	
+	@Id
 	private String matricule;
 	private String nom;
 	private String prenom;
@@ -19,7 +22,9 @@ public class Collaborateur {
 	private boolean actif;
 	
 	
-	
+	public Collaborateur(){
+		
+	}
 	
 	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateNaissance, String adresse,
 			String numSecSoc, String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif) {

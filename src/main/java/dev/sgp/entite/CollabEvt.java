@@ -2,13 +2,20 @@ package dev.sgp.entite;
 
 import java.time.ZonedDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CollabEvt {
 	
+	@Id
 	private String matricule;
 	private TypeCollabEvt type;
 	private ZonedDateTime dateHeure;
 	
-	
+	public CollabEvt(){
+		
+	}
 	
 	public CollabEvt(String matricule, TypeCollabEvt type, ZonedDateTime dateHeure) {
 		this.matricule = matricule;
