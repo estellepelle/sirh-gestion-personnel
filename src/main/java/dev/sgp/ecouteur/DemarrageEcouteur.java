@@ -10,13 +10,16 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
+import dev.sgp.service.DepartementService;
 
 @WebListener
 public class DemarrageEcouteur implements ServletContextListener {
 	
 
 	@Inject private CollaborateurService collabService;
+	@Inject private DepartementService depService;
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		
@@ -35,6 +38,12 @@ public class DemarrageEcouteur implements ServletContextListener {
 				new Collaborateur("5", "pop", "youpi", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true)
 				
 		).forEach(collab -> collabService.sauvegarderCollaborateur(collab));
+		
+		Stream.of(new Departement(1,"Comptabilité"),
+				new Departement(2,"Ressources Humaines"),
+				new Departement(3,"Informatique"),
+				new Departement(4,"Administratif")
+		).forEach(dep -> depService.sauvegarderDepartement(dep));
 		
 		
 	}
