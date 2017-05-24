@@ -10,15 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dev.sgp.entite.Collaborateur;
-import dev.sgp.service.CollaborateurService;
+import dev.sgp.entite.CollabEvt;
+import dev.sgp.service.ActiviteService;
 
-
-@WebServlet("/collaborateurs/lister")
-public class ListerCollaborateursController extends HttpServlet {
+@WebServlet("/activites")
+public class ActiviteController extends HttpServlet {
 	
-
-	@Inject private CollaborateurService collabService;
+	@Inject private ActiviteService activiteService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,13 +24,14 @@ public class ListerCollaborateursController extends HttpServlet {
 		
 		
 		// utilisation du service
-		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
+		List<CollabEvt> activites = activiteService.listerActivitesCollab();
 		
 		
 		
-		req.setAttribute("collaborateur", collaborateurs);
+		req.setAttribute("activites", activites);
 		
-		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
+		req.getRequestDispatcher("/WEB-INF/views/collab/activiteCollab.jsp")
 		.forward(req, resp);
 	}
+	
 }

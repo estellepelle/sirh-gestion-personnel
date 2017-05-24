@@ -3,6 +3,8 @@ package dev.sgp.entite;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
+import javax.inject.Inject;
+
 public class Collaborateur {
 	
 	private String matricule;
