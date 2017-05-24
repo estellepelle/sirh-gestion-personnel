@@ -20,6 +20,7 @@ public class ListerCollaborateursController extends HttpServlet {
 
 	@Inject private CollaborateurService collabService;
 	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

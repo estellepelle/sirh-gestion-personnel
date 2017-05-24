@@ -26,6 +26,7 @@ public class CollabEvt {
 	
 	public TypeCollabEvt getType() {
 		return type;
+		
 	}
 	
 	public void setType(TypeCollabEvt type) {
