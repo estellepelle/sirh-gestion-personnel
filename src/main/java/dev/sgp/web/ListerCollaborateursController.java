@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
+import dev.sgp.service.DepartementService;
 
 
 @WebServlet("/collaborateurs/lister")
@@ -19,6 +21,7 @@ public class ListerCollaborateursController extends HttpServlet {
 	
 
 	@Inject private CollaborateurService collabService;
+	@Inject private DepartementService depService;
 	
 	
 	@Override
@@ -28,10 +31,11 @@ public class ListerCollaborateursController extends HttpServlet {
 		
 		// utilisation du service
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
-		
+		List<Departement> departements= depService.listerDepartements();
 		
 		
 		req.setAttribute("collaborateur", collaborateurs);
+		req.setAttribute("departements", departements);
 		
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
 		.forward(req, resp);
