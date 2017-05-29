@@ -100,16 +100,25 @@ public class CollaborateurService {
 
 	}
 
-	public void modifDonneBanque(String matricule, Collaborateur collab) {
+	public boolean modifDonneBanque(String matricule, Collaborateur collab) {
 		Collaborateur collaborateur = collabService.leCollaborateur(matricule);
-
-		if (collaborateur != null) {
-
-			collaborateur.setNomBanque(collab.getNomBanque());
-			collaborateur.setBic(collab.getBic());
-			collaborateur.setIban(collab.getIban());
-
+		
+		if(collab.getNomBanque() == null || collab.getBic() == null  || collab.getIban() ==null ){
+			return false;
 		}
+		else{
+			
+			if (collaborateur != null) {
+
+				collaborateur.setNomBanque(collab.getNomBanque());
+				collaborateur.setBic(collab.getBic());
+				collaborateur.setIban(collab.getIban());
+
+			}
+			
+			return true;
+		}
+		
 	}
 
 }
