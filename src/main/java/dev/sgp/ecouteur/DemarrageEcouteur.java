@@ -30,20 +30,23 @@ public class DemarrageEcouteur implements ServletContextListener {
 		
 		
 		
-		Stream.of(
-				new Collaborateur("1", "ee", "ss", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true),
-				new Collaborateur("2", "est", "rr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true),
-				new Collaborateur("3", "pmp", "cdr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true),
-				new Collaborateur("4", "sar", "vif", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true),
-				new Collaborateur("5", "pop", "youpi", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true)
-				
-		).forEach(collab -> collabService.sauvegarderCollaborateur(collab));
+	
 		
 		Stream.of(new Departement(1,"Comptabilité"),
 				new Departement(2,"Ressources Humaines"),
 				new Departement(3,"Informatique"),
 				new Departement(4,"Administratif")
 		).forEach(dep -> depService.sauvegarderDepartement(dep));
+		
+
+		Stream.of(
+				new Collaborateur("1", "ee", "ss", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, depService.listerDepartements().get(0)),
+				new Collaborateur("2", "est", "rr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, depService.listerDepartements().get(3)),
+				new Collaborateur("3", "pmp", "cdr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, depService.listerDepartements().get(1)),
+				new Collaborateur("4", "sar", "vif", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, depService.listerDepartements().get(2)),
+				new Collaborateur("5", "pop", "youpi", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, depService.listerDepartements().get(0))
+				
+		).forEach(collab -> collabService.sauvegarderCollaborateur(collab));
 		
 		
 	}

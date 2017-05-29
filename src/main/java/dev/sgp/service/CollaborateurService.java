@@ -29,16 +29,25 @@ public class CollaborateurService {
 	
 	@Inject Event<CollabEvt> collabEvt;
 	
-	public List<Collaborateur> listerCollaborateurs() {
+	public List<Collaborateur> listerCollaborateurs(Integer dep) {
+		
 		
 		List<Collaborateur> listeCollaborateur = new ArrayList<>();
 		
-		
-		TypedQuery<Collaborateur> query = em.createQuery("SELECT c FROM Collaborateur c",Collaborateur.class);
-		
-		listeCollaborateur = query.getResultList();
+		if(dep == null){
+				TypedQuery<Collaborateur> query = em.createQuery("SELECT c FROM Collaborateur c",Collaborateur.class);
+			
+			listeCollaborateur = query.getResultList();
 	
+		}else{
+			
 
+			TypedQuery<Collaborateur> query = em.createQuery("SELECT c FROM Collaborateur c WHERE c.departement.id =:dep" ,Collaborateur.class)
+					.setParameter("dep", dep);
+			
+			listeCollaborateur = query.getResultList();
+	
+		}
 		
 		return listeCollaborateur;
 	}
