@@ -51,6 +51,24 @@ public class CollaborateurService {
 		
 		return listeCollaborateur;
 	}
+	
+
+	public Collaborateur leCollaborateur(String matricule) {
+		
+		
+	
+		
+		
+		TypedQuery<Collaborateur> query = em.createQuery("SELECT c FROM Collaborateur c WHERE c.matricule =:matricule",Collaborateur.class)
+				.setParameter("matricule", matricule);
+		
+			
+		
+	
+		
+		
+		return query.getSingleResult();
+	}
 
 	
 	public void sauvegarderCollaborateur(Collaborateur collab) {
