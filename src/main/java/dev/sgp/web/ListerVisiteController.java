@@ -17,19 +17,18 @@ import dev.sgp.service.VisiteWebService;
 @WebServlet("/visite/lister")
 public class ListerVisiteController extends HttpServlet {
 
-
 	// récupération du service
-	@Inject private VisiteWebService visiteService;
-	
+	@Inject
+	private VisiteWebService visiteService;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-	// utilisation du service
-			List<VisiteStatistiques> visites = visiteService.construireStatistiques();
-			
-			req.setAttribute("visites", visites);
-			
-			req.getRequestDispatcher("/WEB-INF/views/collab/listerVisites.jsp")
-			.forward(req, resp);
+
+		// utilisation du service
+		List<VisiteStatistiques> visites = visiteService.construireStatistiques();
+
+		req.setAttribute("visites", visites);
+
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerVisites.jsp").forward(req, resp);
 	}
 }

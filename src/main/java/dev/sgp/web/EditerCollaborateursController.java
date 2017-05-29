@@ -28,34 +28,32 @@ public class EditerCollaborateursController extends HttpServlet {
 			resp.getWriter().write("<h1>Edition de collaborateur</h1> Matricule : " + matriculeParam);
 		}
 
-		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		Map<Boolean, List<String>> validationParams = validerParametres(req, "matricule","titre", "nom", "prenom");
-		
+
+		Map<Boolean, List<String>> validationParams = validerParametres(req, "matricule", "titre", "nom", "prenom");
+
 		resp.setCharacterEncoding("utf-8");
-		
+
 		if (validationParams.get(false) != null) {
 			resp.setStatus(400);
-			
-			resp.getWriter().write("Les paramètres suivants sont incorrects : " + validationParams.get(false).stream().collect(joining(",")));
+
+			resp.getWriter().write("Les paramètres suivants sont incorrects : "
+					+ validationParams.get(false).stream().collect(joining(",")));
 		} else {
 			resp.setStatus(201);
-			
-			resp.getWriter().write("Création d'un collaborateur avec les informations suivantes : " 
-				+ validationParams.get(true).stream().map(p -> p + "=" + req.getParameter(p)).collect(joining(",")));
+
+			resp.getWriter().write("Création d'un collaborateur avec les informations suivantes : " + validationParams
+					.get(true).stream().map(p -> p + "=" + req.getParameter(p)).collect(joining(",")));
 		}
-		
+
 	}
-	
+
 	private Map<Boolean, List<String>> validerParametres(HttpServletRequest req, String... params) {
-		return Stream.of(params).collect(
-				groupingBy(
-						param -> req.getParameter(param) != null && !"".equals(req.getParameter(param)
-				)));
+		return Stream.of(params)
+				.collect(groupingBy(param -> req.getParameter(param) != null && !"".equals(req.getParameter(param))));
 	}
 
 }

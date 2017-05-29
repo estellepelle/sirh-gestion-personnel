@@ -18,26 +18,22 @@ import dev.sgp.service.DepartementService;
 
 @WebServlet("/collaborateurs/lister")
 public class ListerCollaborateursController extends HttpServlet {
-	
 
-	@Inject private CollaborateurService collabService;
-	@Inject private DepartementService depService;
-	
-	
+	@Inject
+	private CollaborateurService collabService;
+	@Inject
+	private DepartementService depService;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
+
 		// utilisation du service
-		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs(-1);
-		List<Departement> departements= depService.listerDepartements();
-		
-		
+		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs(null);
+		List<Departement> departements = depService.listerDepartements();
+
 		req.setAttribute("collaborateur", collaborateurs);
 		req.setAttribute("departements", departements);
-		
-		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-		.forward(req, resp);
+
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 	}
 }

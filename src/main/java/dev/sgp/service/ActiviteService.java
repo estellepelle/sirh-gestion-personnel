@@ -10,16 +10,16 @@ import dev.sgp.entite.CollabEvt;
 
 @ApplicationScoped
 public class ActiviteService {
-	
+
 	private List<CollabEvt> listeCollabEvt = new ArrayList<>();
-	
-	public void recevoirEvenementCollab(@Observes CollabEvt evt){
+
+	public void recevoirEvenementCollab(@Observes CollabEvt evt) {
 		listeCollabEvt.add(evt);
 	}
-	
-	public List<CollabEvt> listerActivitesCollab(){
-	
+
+	public List<CollabEvt> listerActivitesCollab() {
+
 		return listeCollabEvt;
-		
+
 	}
 }

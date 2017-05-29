@@ -15,23 +15,19 @@ import dev.sgp.service.ActiviteService;
 
 @WebServlet("/activites")
 public class ActiviteController extends HttpServlet {
-	
-	@Inject private ActiviteService activiteService;
-	
+
+	@Inject
+	private ActiviteService activiteService;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
+
 		// utilisation du service
 		List<CollabEvt> activites = activiteService.listerActivitesCollab();
-		
-		
-		
+
 		req.setAttribute("activites", activites);
-		
-		req.getRequestDispatcher("/WEB-INF/views/collab/activiteCollab.jsp")
-		.forward(req, resp);
+
+		req.getRequestDispatcher("/WEB-INF/views/collab/activiteCollab.jsp").forward(req, resp);
 	}
-	
+
 }

@@ -9,21 +9,15 @@ public class Departement {
 	@Id
 	private int id;
 	private String nom;
-	
 
-	
-	public Departement(){
-		
+	public Departement() {
+
 	}
-	
-	
 
 	public Departement(int id, String nom) {
 		this.id = id;
 		this.nom = nom;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -40,6 +34,5 @@ public class Departement {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	
+
 }

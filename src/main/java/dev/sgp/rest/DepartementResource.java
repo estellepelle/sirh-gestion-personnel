@@ -13,15 +13,15 @@ import dev.sgp.service.DepartementService;
 
 @Path("/departements")
 public class DepartementResource {
-	
-	@Inject private DepartementService depService;
-	
+
+	@Inject
+	private DepartementService depService;
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Departement> list() {
-	
-		
+
 		return depService.listerDepartements();
 	}
-	
+
 }

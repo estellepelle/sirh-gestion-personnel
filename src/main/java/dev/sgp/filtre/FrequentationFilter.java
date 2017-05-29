@@ -17,45 +17,36 @@ import dev.sgp.service.VisiteWebService;
 
 
 
-@WebFilter(urlPatterns = { "/*" },description = "Request statistic filter")
-public class FrequentationFilter implements Filter{
-	
-	
-	
+@WebFilter(urlPatterns = { "/*" }, description = "Request statistic filter")
+public class FrequentationFilter implements Filter {
+
 	// récupération du service
-	@Inject private VisiteWebService visiteService ;
-	
+	@Inject
+	private VisiteWebService visiteService;
 
-
-	
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-	
+
 	}
-	
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		
+
 		long before = System.currentTimeMillis();
 		String path = ((HttpServletRequest) req).getRequestURI();
 		chain.doFilter(req, resp);
 		long after = System.currentTimeMillis();
 		long time = (after - before);
-		
-		
-		visiteService.sauvegarderVisite(new VisiteWeb( path, time )); 
-	
-		
- 	}
-	
+
+		visiteService.sauvegarderVisite(new VisiteWeb(path, time));
+
+	}
+
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }
